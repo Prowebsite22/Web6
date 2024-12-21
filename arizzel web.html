@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arizzle Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #ddd;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin: 50px auto;
+            width: 80%;
+            max-width: 800px;
+            background-color: #222;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            padding: 30px;
+        }
+        h1 {
+            color: #f0e68c;
+            font-size: 2.5em;
+        }
+        .item {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            background-color: #333;
+        }
+        .item:hover {
+            background-color: #444;
+            cursor: pointer;
+        }
+        .price {
+            font-size: 1.2em;
+            color: #87CEEB;
+        }
+        .redeem-section {
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 2px solid #555;
+        }
+        .redeem-input {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #444;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .redeem-btn {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #f0e68c;
+            color: #111;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .redeem-btn:hover {
+            background-color: #ffd700;
+        }
+        .success {
+            color: #32cd32;
+            margin-top: 10px;
+        }
+        .error {
+            color: #ff6347;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome to Arizzle Shop</h1>
+        
+        <!-- Phantom Abyssal Megs Section -->
+        <div class="item">
+            <p><strong>One Shiny Sparkling Phantom Abyssal Meg</strong></p>
+            <p class="price" id="price1">600 Robux / $5</p>
+        </div>
+
+        <div class="item">
+            <p><strong>Two Shiny Sparkling Phantom Abyssal Megs</strong></p>
+            <p class="price" id="price2">1050 Robux / $7.50</p>
+        </div>
+
+        <div class="item">
+            <p><strong>Five Shiny Sparkling Phantom Abyssal Megs</strong></p>
+            <p class="price" id="price3">2300 Robux / $13</p>
+        </div>
+
+        <!-- Translucent Ancient Megs Section -->
+        <div class="item">
+            <p><strong>One Shiny Sparkling Translucent Ancient Meg</strong></p>
+            <p class="price" id="price4">350 Robux / $3</p>
+        </div>
+
+        <div class="item">
+            <p><strong>Two Shiny Sparkling Translucent Ancient Megs</strong></p>
+            <p class="price" id="price5">600 Robux / $5.50</p>
+        </div>
+
+        <div class="item">
+            <p><strong>Five Shiny Sparkling Translucent Ancient Megs</strong></p>
+            <p class="price" id="price6">1200 Robux / $11.50</p>
+        </div>
+
+        <!-- Redeem Code Section -->
+        <div class="redeem-section">
+            <h2>Redeem Code for 20% Off</h2>
+            <p>Use code <strong>Arizzle1</strong> for 20% off your purchase!</p>
+            <input type="text" class="redeem-input" id="redeemCode" placeholder="Enter redeem code">
+            <button class="redeem-btn" onclick="applyDiscount()">Redeem</button>
+            <p id="redeemMessage"></p>
+        </div>
+
+    </div>
+
+    <script>
+        let discounted = false;
+
+        function applyDiscount() {
+            const code = document.getElementById('redeemCode').value;
+            const message = document.getElementById('redeemMessage');
+
+            if (code === "Arizzle1" && !discounted) {
+                // Update Phantom Abyssal Megs prices
+                document.getElementById('price1').innerText = "480 Robux / $4";
+                document.getElementById('price2').innerText = "840 Robux / $6";
+                document.getElementById('price3').innerText = "1840 Robux / $10.40";
+
+                // Update Translucent Ancient Megs prices
+                document.getElementById('price4').innerText = "280 Robux / $2.40";
+                document.getElementById('price5').innerText = "480 Robux / $4.40";
+                document.getElementById('price6').innerText = "960 Robux / $9.20";
+
+                message.innerText = "Discount Applied! 20% off!";
+                message.className = 'success';
+                discounted = true;
+            } else if (discounted) {
+                message.innerText = "Discount already applied!";
+                message.className = 'error';
+            } else {
+                message.innerText = "Invalid code. Try again!";
+                message.className = 'error';
+            }
+        }
+    </script>
+
+</body>
+</html>
